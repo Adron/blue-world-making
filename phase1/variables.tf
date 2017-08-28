@@ -19,3 +19,8 @@ variable "azure_cluster_count" {
   type = "string"
   description = "Count of cluster instances to start."
 }
+
+variable "azure_ssh_key" {
+  type = "string"
+  description = "SSH Key for the Azure Kubernetes Cluster."
+}

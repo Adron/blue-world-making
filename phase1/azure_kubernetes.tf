@@ -1,8 +1,3 @@
-resource "azurerm_resource_group" "kubernetes_house" {
-  name     = "kuberneteshouse"
-  location = "West US"
-}
-
 resource "azurerm_container_service" "kubyhousecontainers" {
   name                   = "kubecontainers"
   location               = "${azurerm_resource_group.kubernetes_house.location}"
@@ -18,7 +13,7 @@ resource "azurerm_container_service" "kubyhousecontainers" {
     admin_username = "${var.linux_admin_username}"
 
     ssh_key {
-      key_data = ""
+      key_data = "${var.azure_ssh_key}"
     }
   }
 
