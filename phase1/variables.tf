@@ -26,13 +26,13 @@ variable "azure_ssh_key" {
 }
 
 // Outputs
-output "gcp_cluster_endpoint" {
-  value = "${google_container_cluster.primary.endpoint}"
-}
-
-output "gcp_ssh_command" {
-  value = "ssh ${var.linux_admin_username}@${google_container_cluster.primary.endpoint}"
-}
+//output "gcp_cluster_endpoint" {
+//  value = "${google_container_cluster.primary.endpoint}"
+//}
+//
+//output "gcp_ssh_command" {
+//  value = "ssh ${var.linux_admin_username}@${google_container_cluster.primary.endpoint}"
+//}
 //
 //output "azure_master_dns_fqdn" {
 //  value = "${azurerm_container_service.kubyhousecontainers.master_profile.fqdn}"
