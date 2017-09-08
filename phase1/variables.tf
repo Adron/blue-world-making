@@ -25,19 +25,19 @@ variable "azure_ssh_key" {
   description = "SSH Key for the Azure Kubernetes Cluster."
 }
 
-// Outputs
-//output "gcp_cluster_endpoint" {
-//  value = "${google_container_cluster.primary.endpoint}"
-//}
-//
-//output "gcp_ssh_command" {
-//  value = "ssh ${var.linux_admin_username}@${google_container_cluster.primary.endpoint}"
-//}
-//
-//output "azure_master_dns_fqdn" {
-//  value = "${azurerm_container_service.kubyhousecontainers.master_profile.fqdn}"
-//}
-//
-//output "azure_ssh_command" {
-//  value = "ssh ${var.linux_admin_username}@${azurerm_container_service.kubyhousecontainers.master_profile.fqdn} -A -p 22"
-//}
+ Outputs
+output "gcp_cluster_endpoint" {
+  value = "${google_container_cluster.primary.endpoint}"
+}
+
+output "gcp_ssh_command" {
+  value = "ssh ${var.linux_admin_username}@${google_container_cluster.primary.endpoint}"
+}
+
+output "azure_master_dns_fqdn" {
+  value = "${azurerm_container_service.kubyhousecontainers.master_profile.fqdn}"
+}
+
+output "azure_ssh_command" {
+  value = "ssh ${var.linux_admin_username}@${azurerm_container_service.kubyhousecontainers.master_profile.fqdn} -A -p 22"
+}
