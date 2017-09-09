@@ -25,7 +25,7 @@ variable "azure_ssh_key" {
   description = "SSH Key for the Azure Kubernetes Cluster."
 }
 
- Outputs
+// Outputs
 output "gcp_cluster_endpoint" {
   value = "${google_container_cluster.primary.endpoint}"
 }
