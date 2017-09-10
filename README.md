@@ -33,4 +33,24 @@ export TF_VAR_aws_region="us-west-2"
 export TF_VAR_azure_ssh_key="ssh-rsa AAAA YOUR SSH KEY HERE your-email-addy@gmail.com"
 ```
 
+The easiest way to get the Azure client, tenant, and subscription information is as follows.
+
+1. Execute `az account list` (insure you've logged in `az login`). This provides the subscription id labeled merely as *id* and tenant id as *tenantId*.
+2. Then set the account `az account set --subscription="SUBSCRIPTION_ID"`.
+3. Create a service principal to execute under `az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPTION_ID"`. This outputs 5 values. 
+```
+{
+    "appId": "00000000-0000-0000-0000-000000000000",
+    "displayName": "azure-cli-2017-06-05-10-41-15",
+    "name": "http://azure-cli-2017-06-05-10-41-15",
+    "password": "0000-0000-0000-0000-000000000000",
+    "tenant": "00000000-0000-0000-0000-000000000000"
+}
+```
+with the appId equal to `client_id`, password equal to `client_secret`, and tenant is the `tenant_id`.  
+
+These values can then be verified with `az login --service-principal -u CLIENT_ID -p CLIENT_SECRET --tenant TENANT_ID`.
+
 The singular item for GCP however is simply to get, download, and place the `accounts.json` file in a directory parallel to the `blue-world-making` directory in a directory called `secrets`.
+
+

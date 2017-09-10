@@ -5,9 +5,9 @@ variable "tenant_id" {}
 variable "aws_region" {}
 
 provider "google" {
-  credentials = "${file("../../secrets/account.json")}"
-  project     = "that-big-universe"
-  region = "us-west1"
+  credentials = "${file("../../secrets/account-thrashingcode.json")}"
+  project     = "thrashingcorecode"
+  region      = "us-west1"
 }
 
 provider "azurerm" {
@@ -15,8 +15,4 @@ provider "azurerm" {
   client_id       = "${var.client_id}"
   client_secret   = "${var.client_secret}"
   tenant_id       = "${var.tenant_id}"
-}
-
-provider "aws" {
-
 }
