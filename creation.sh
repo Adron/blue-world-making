@@ -5,11 +5,12 @@ CLUSTER_PASSWORD="coolpassword"
 
 cd phase1
 echo "Starting phase 1, Creat the Kubernetes Cluster."
-terraform apply -var linux_admin_username=@CLUSTER_USERNAME -var linux_admin_password=@CLUSTER_PASSWORD
+echo "terraform apply -var linux_admin_username=$CLUSTER_USERNAME -var linux_admin_password=$CLUSTER_PASSWORD"
+terraform apply -var linux_admin_username=$CLUSTER_USERNAME -var linux_admin_password=$CLUSTER_PASSWORD
 
 echo "Getting credentials and connection kubectl Proxy."
-
 gcloud container clusters get-credentials kubyhouse --zone us-west1-a --project thrashingcorecode
+
 echo "Verifying GCP Kubernetes Nodes."
 kubectl get nodes
 
@@ -23,7 +24,7 @@ cd ..
 echo "Phase 1 is completed."
 
 
-kubectl config set-context gce --user=coolusername
+kubectl config set-context gce --user=$CLUSTER_USERNAME
 
 #kubectl config set-context default-system \
 #  --cluster=chosen-cluster \

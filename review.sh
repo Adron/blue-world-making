@@ -2,4 +2,3 @@
 
 CLUSTER_USERNAME="coolusername"
 CLUSTER_PASSWORD="coolpassword"
-
