@@ -16,7 +16,7 @@
 //      key_data = "${var.azure_ssh_key}"
 //    }
 //  }
-//
+
 //  agent_pool_profile {
 //    name       = "default"
 //    count      = "${var.azure_node_count}"

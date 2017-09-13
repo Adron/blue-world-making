@@ -9,3 +9,4 @@ printf 'yes' | terraform destroy -var linux_admin_username=@CLUSTER_USERNAME -va
 
 cd ..
 echo "Phase 1 destruction is completed."
+
