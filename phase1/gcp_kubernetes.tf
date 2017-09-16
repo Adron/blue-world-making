@@ -1,5 +1,5 @@
 resource "google_container_cluster" "primary" {
-  name               = "kubyhouse"
+  name               = "${var.cluster_name}"
   zone               = "us-west1-a"
   initial_node_count = "${var.gcp_cluster_count}"
 
@@ -11,6 +11,7 @@ resource "google_container_cluster" "primary" {
   master_auth {
     username = "${var.linux_admin_username}"
     password = "${var.linux_admin_password}}"
+
   }
 
   node_config {

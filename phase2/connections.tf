@@ -1,10 +1,11 @@
 provider "kubernetes" {
-  config_context_auth_info = "ops"
-  config_context_cluster   = "mycluster"
+  config_context_auth_info = ""
+  config_context_cluster   = ""
 }
 
 resource "kubernetes_namespace" "example" {
   metadata {
-    name = "my-first-namespace"
+    name = "default"
   }
 }
+

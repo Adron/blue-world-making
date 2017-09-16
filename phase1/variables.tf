@@ -9,12 +9,22 @@ variable "linux_admin_password" {
   type ="string"
   description = "The password for the Linux admin account."
 }
+//
+//variable "ssh_key" {
+//  type = "string"
+//  description = "SSH Key for Kubernetes Clusters."
+//}
 
 // GCP Variables
 
 variable "gcp_cluster_count" {
   type = "string"
   description = "Count of cluster instances to start."
+}
+
+variable "cluster_name" {
+  type = "string"
+  description = "Cluster name for the GCP Cluster."
 }
 
 // Azure Variables
@@ -24,11 +34,6 @@ variable "azure_node_count" {
   description = "Count of cluster instances to start."
 }
 
-variable "azure_ssh_key" {
-  type = "string"
-  description = "SSH Key for the Azure Kubernetes Cluster."
-}
-
 // GCP Outputs
 output "gcp_cluster_endpoint" {
   value = "${google_container_cluster.primary.endpoint}"
@@ -36,6 +41,10 @@ output "gcp_cluster_endpoint" {
 
 output "gcp_ssh_command" {
   value = "ssh ${var.linux_admin_username}@${google_container_cluster.primary.endpoint}"
+}
+
+output "gcp_cluster_name" {
+  value = "${google_container_cluster.primary.name}"
 }
 //
 //// Azure Outputs

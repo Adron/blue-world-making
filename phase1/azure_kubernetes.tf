@@ -13,7 +13,7 @@
 //    admin_username = "${var.linux_admin_username}"
 //
 //    ssh_key {
-//      key_data = "${var.azure_ssh_key}"
+//      key_data = "${var.ssh_key}"
 //    }
 //  }
 
