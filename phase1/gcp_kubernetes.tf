@@ -1,3 +1,9 @@
+resource "kubernetes_namespace" "dev-workspace" {
+  metadata {
+    name = "dev-workspace"
+  }
+}
+
 resource "google_container_cluster" "primary" {
   name               = "${var.cluster_name}"
   zone               = "us-west1-a"
@@ -29,4 +35,3 @@ resource "google_container_cluster" "primary" {
     tags = ["foo", "bar"]
   }
 }
-
