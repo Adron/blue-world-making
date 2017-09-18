@@ -1,4 +1,8 @@
-
+resource "kubernetes_namespace" "dev-workspace" {
+  metadata {
+    name = "dev-workspace"
+  }
+}
 
 resource "kubernetes_service" "example" {
   metadata {

@@ -6,6 +6,8 @@ CLUSTER_NAME="kubyhouse"
 
 cd phase1
 
+terraform init
+
 echo "Starting phase 1 destruction. Destroying the core infrastructure for Kubernetes."
 
 echo "terraform destroy \
