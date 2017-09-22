@@ -1,5 +1,7 @@
 # Blue World Making
 
+[![Stories in Ready](https://badge.waffle.io/Adron/blue-world-making.png?label=ready&title=Ready)](http://waffle.io/Adron/blue-world-making)
+
 This repository is made up of configuration that builds out environments based on a phased approach. Each phase is dependent on the phase before the previous, but all can be run together in a seamless from from phase to phase.
 
 *Phase 1:* This is the phase where initial infrastructure is brought up that will be used to provide hosting capabilities around Kubernetes. This phase could be skipped once the ability to use container services within AWS, GCP, and Azure are integrated, but for now the entirety of the environment is spooled up in order to actually host Kubernetes itself.
