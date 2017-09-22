@@ -9,11 +9,11 @@ variable "linux_admin_password" {
   type ="string"
   description = "The password for the Linux admin account."
 }
-//
-//variable "ssh_key" {
-//  type = "string"
-//  description = "SSH Key for Kubernetes Clusters."
-//}
+
+variable "ssh_key" {
+  type = "string"
+  description = "SSH Key for Kubernetes Clusters."
+}
 
 // GCP Variables
 
@@ -46,12 +46,12 @@ output "gcp_ssh_command" {
 output "gcp_cluster_name" {
   value = "${google_container_cluster.primary.name}"
 }
-//
-//// Azure Outputs
-//output "azure_master_dns_fqdn" {
-//  value = "${azurerm_container_service.kubyhousecontainers.master_profile.fqdn}"
-//}
-//
-//output "azure_ssh_command" {
-//  value = "ssh ${var.linux_admin_username}@${azurerm_container_service.kubyhousecontainers.master_profile.fqdn} -A -p 22"
-//}
+
+// Azure Outputs
+output "azure_master_dns_fqdn" {
+  value = "${azurerm_container_service.kubyhousecontainers.master_profile.fqdn}"
+}
+
+output "azure_ssh_command" {
+  value = "ssh ${var.linux_admin_username}@${azurerm_container_service.kubyhousecontainers.master_profile.fqdn} -A -p 22"
+}
