@@ -4,7 +4,12 @@ CLUSTER_USERNAME="coolusername"
 CLUSTER_PASSWORD="coolpassword"
 CLUSTER_NAME="kubyhouse"
 
-cd phase1
+echo "Initializing state location."
+
+cd state_init
+./init_state_storage.sh
+
+cd ../phase1
 
 echo "Terraform init for provider dependencies."
 
