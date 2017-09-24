@@ -1,12 +1,12 @@
-resource "azurerm_container_service" "kubyhousecontainers" {
-  name = "kubecontainers"
-  location = "${azurerm_resource_group.kubernetes_house.location}"
-  resource_group_name = "${azurerm_resource_group.kubernetes_house.name}"
+resource "azurerm_container_service" "bluekuby" {
+  name = "bluekubyhouse"
+  location = "${azurerm_resource_group.blue_kuby_group.location}"
+  resource_group_name = "${azurerm_resource_group.blue_kuby_group.name}"
   orchestration_platform = "Kubernetes"
 
   master_profile {
     count = 1
-    dns_prefix = "kubyhouse"
+    dns_prefix = "${var.azure_cluster_prefix}"
   }
 
   linux_profile {

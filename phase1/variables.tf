@@ -34,24 +34,29 @@ variable "azure_node_count" {
   description = "Count of cluster instances to start."
 }
 
+variable "azure_cluster_prefix" {
+  type = "string"
+  description = "The prefix for the Azure cluster."
+}
+
 // GCP Outputs
 output "gcp_cluster_endpoint" {
-  value = "${google_container_cluster.primary.endpoint}"
+  value = "${google_container_cluster.googlykuby.endpoint}"
 }
 
 output "gcp_ssh_command" {
-  value = "ssh ${var.linux_admin_username}@${google_container_cluster.primary.endpoint}"
+  value = "ssh ${var.linux_admin_username}@${google_container_cluster.googlykuby.endpoint}"
 }
 
 output "gcp_cluster_name" {
-  value = "${google_container_cluster.primary.name}"
+  value = "${google_container_cluster.googlykuby.name}"
 }
 
 // Azure Outputs
 output "azure_master_dns_fqdn" {
-  value = "${azurerm_container_service.kubyhousecontainers.master_profile.fqdn}"
+  value = "${azurerm_container_service.bluekuby.master_profile.fqdn}"
 }
 
 output "azure_ssh_command" {
-  value = "ssh ${var.linux_admin_username}@${azurerm_container_service.kubyhousecontainers.master_profile.fqdn} -A -p 22"
+  value = "ssh ${var.linux_admin_username}@${azurerm_container_service.bluekuby.master_profile.fqdn} -A -p 22"
 }

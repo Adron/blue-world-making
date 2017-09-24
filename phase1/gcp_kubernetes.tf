@@ -1,6 +1,5 @@
-resource "google_container_cluster" "primary" {
+resource "google_container_cluster" "googlykuby" {
   name               = "${var.cluster_name}"
-  network = "${google_compute_network.kubynetwork.name}"
   zone               = "us-west1-a"
   initial_node_count = "${var.gcp_cluster_count}"
 

@@ -1,4 +1,4 @@
-resource "azurerm_resource_group" "kubernetes_house" {
-  name = "kuberneteshouse"
+resource "azurerm_resource_group" "blue_kuby_group" {
+  name = "bluekubygroup"
   location = "West US"
 }

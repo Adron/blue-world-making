@@ -2,7 +2,8 @@
 
 CLUSTER_USERNAME="coolusername"
 CLUSTER_PASSWORD="coolpassword"
-CLUSTER_NAME="kubyhouse"
+GOOGLE_CLUSTER_NAME="googlykubycluster"
+AZURE_CLUSTER_PREFIX="bluekubycluster"
 
 echo "Initializing state location."
 
@@ -20,7 +21,8 @@ echo "terraform apply -var linux_admin_username=$CLUSTER_USERNAME -var linux_adm
 terraform apply \
     -var linux_admin_username=$CLUSTER_USERNAME \
     -var linux_admin_password=$CLUSTER_PASSWORD \
-    -var cluster_name=$CLUSTER_NAME
+    -var cluster_name=$GOOGLE_CLUSTER_NAME \
+    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
 
 echo "Now use `gcloud container clusters get-credentials kubyhouse --zone us-west1-a --project thrashingcorecode` to connect."
 gcloud container clusters get-credentials kubyhouse --zone us-west1-a --project thrashingcorecode
