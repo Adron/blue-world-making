@@ -23,9 +23,9 @@ resource "google_container_cluster" "googlykuby" {
     ]
 
     labels {
-      foo = "bar"
+      this-is-for = "dev-cluster"
     }
 
-    tags = ["foo", "bar"]
+    tags = ["dev", "work"]
   }
 }

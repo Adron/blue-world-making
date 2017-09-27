@@ -3,6 +3,9 @@ variable "client_id" {}
 variable "client_secret" {}
 variable "tenant_id" {}
 variable "aws_region" {}
+variable "gcp_project" {}
+
+gcp_project = "thrashingcorecode"
 
 provider "google" {
   credentials = "${file("../../secrets/account-thrashingcode.json")}"
@@ -18,3 +21,11 @@ provider "azurerm" {
 }
 
 provider "aws" {}
+
+terraform {
+  backend "gcs" {
+    bucket  = "blue-world-terraform-state"
+    path    = "terraform.tfstate"
+    project = "thrashingcorecode"
+  }
+}
