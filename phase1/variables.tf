@@ -1,5 +1,4 @@
 // General Variables
-
 variable "linux_admin_username" {
   type        = "string"
   description = "User name for authentication to the Kubernetes linux agent virtual machines in the cluster."
@@ -15,8 +14,10 @@ variable "ssh_key" {
   description = "SSH Key for Kubernetes Clusters."
 }
 
-// GCP Variables
+// AWS Variables
+variable "aws_region" {}
 
+// GCP Variables
 variable "gcp_cluster_count" {
   type = "string"
   description = "Count of cluster instances to start."
@@ -28,7 +29,6 @@ variable "cluster_name" {
 }
 
 // Azure Variables
-
 variable "azure_node_count" {
   type = "string"
   description = "Count of cluster instances to start."
@@ -38,6 +38,12 @@ variable "azure_cluster_prefix" {
   type = "string"
   description = "The prefix for the Azure cluster."
 }
+
+variable "subscription_id" {}
+variable "client_id" {}
+variable "client_secret" {}
+variable "tenant_id" {}
+
 
 // GCP Outputs
 output "gcp_cluster_endpoint" {

@@ -24,8 +24,8 @@ terraform apply \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
     -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
 
-echo "Now use `gcloud container clusters get-credentials kubyhouse --zone us-west1-a --project thrashingcorecode` to connect."
-gcloud container clusters get-credentials kubyhouse --zone us-west1-a --project thrashingcorecode
+echo "Now use `gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode` to connect."
+gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode
 
 echo "Setting proxy up."
 kubectl proxy &

@@ -22,5 +22,6 @@ terraform destroy \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
     -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
 
-#cd ..
-#echo "Phase 1 destruction is completed."
+cd ..
+
+echo "Destruction is completed."
