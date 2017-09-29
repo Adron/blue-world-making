@@ -14,10 +14,11 @@ terraform plan  \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
     -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
 
-#cd ../phase2
-#echo "Stage 2 Plan"
-#terraform init
-#terraform plan \
-#    -var linux_admin_username=$CLUSTER_USERNAME \
-#    -var linux_admin_password=$CLUSTER_PASSWORD \
-#    -var cluster_name=$CLUSTER_NAME
+cd ../phase2
+echo "Stage 2 Plan"
+terraform init
+terraform plan \
+    -var linux_admin_username=$CLUSTER_USERNAME \
+    -var linux_admin_password=$CLUSTER_PASSWORD \
+    -var cluster_name=$GOOGLE_CLUSTER_NAME \
+    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
