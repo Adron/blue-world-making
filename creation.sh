@@ -38,14 +38,16 @@ sleep 2s
 echo "Phase 2 is starting."
 cd ../phase2
 
-echo "Terraform init for provider dependencies."
 
-echo "Running `kubectl config set-context thrashingcorecode --cluster=$CLUSTER_NAME --user=$CLUSTER_USERNAME` for kubectl context."
-kubectl config set-context thrashingcorecode \
- --cluster=$CLUSTER_NAME \
- --user=$CLUSTER_USERNAME
-
-echo "Config set to use-context."
-kubectl config use-context
-
-terraform apply
+#echo "Terraform init for provider dependencies."
+#terraform init
+#
+#echo "Running `kubectl config set-context thrashingcorecode --cluster=$CLUSTER_NAME --user=$CLUSTER_USERNAME` for kubectl context."
+#kubectl config set-context thrashingcorecode \
+# --cluster=$CLUSTER_NAME \
+# --user=$CLUSTER_USERNAME
+#
+#echo "Config set to use-context."
+#kubectl config use-context
+#
+#terraform apply
