@@ -23,6 +23,9 @@ echo "yes" | terraform destroy \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
     -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
 
-cd ..
+echo "Starting removal of Terraform state."
+
+cd../state_init
+./destroy_state.sh
 
 echo "Destruction is completed."
