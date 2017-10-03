@@ -27,7 +27,7 @@ echo "yes" | terraform destroy \
 
 echo "Starting removal of Terraform state."
 
-cd../state_init
+cd ../state_init
 ./destroy_state.sh
 
 echo "Destruction is completed."
