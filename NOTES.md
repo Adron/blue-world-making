@@ -4,4 +4,6 @@ However, for killing old port usage.
 
 netstat -vanp tcp | grep 8001
 lsof -i tcp:8001
-kill -9 <portnumber>
+kill -9 <pid>
+
+

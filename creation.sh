@@ -20,9 +20,11 @@ cd ../phase1
 
 echo "Terraform init for provider dependencies."
 
-terraform init \
+echo "yes" | terraform init \
     -backend-config="address=$REPO_NAME" \
     -backend-config="path=phase1/terraform.tfstate"
+
+terraform state push terraform.tfstate
 
 echo "Starting phase 1, Create the Kubernetes Cluster."
 echo "terraform destroy \
@@ -38,24 +40,23 @@ terraform apply \
     -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX \
     -var repo_name=$REPO_NAME
 
-echo "Now use `gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode` to connect."
-gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode
+#echo "Now use `gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode` to connect."
+#gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode
+#az acs kubernetes get-credentials --resource-group=bluekubygroup --name=bluekubyhouse
 
-echo "Setting proxy up."
-kubectl proxy &
-
-#az acs kubernetes get-credentials --resource-group kuberneteshouse --name kubecontainers
-#echo "Verifying Azure Kubernetes Nodes."
-#kubectl get nodes
 echo "Phase 1 is completed."
 sleep 2s
+
 echo "Phase 2 is starting."
 cd ../phase2
 
-
 #echo "Terraform init for provider dependencies."
-#terraform init
-#
+echo "yes" | terraform init \
+    -backend-config="address=$REPO_NAME" \
+    -backend-config="path=phase2/terraform.tfstate"
+
+terraform state push terraform.tfstate
+
 #echo "Running `kubectl config set-context thrashingcorecode --cluster=$CLUSTER_NAME --user=$CLUSTER_USERNAME` for kubectl context."
 #kubectl config set-context thrashingcorecode \
 # --cluster=$CLUSTER_NAME \
@@ -63,5 +64,13 @@ cd ../phase2
 #
 #echo "Config set to use-context."
 #kubectl config use-context
-#
-#terraform apply
+
+terraform apply \
+    -var repo_name=$REPO_NAME
+
+
+
+
+#terraform init \
+#    -backend-config="address=terraformstate03102017112805" \
+#    -backend-config="path=phase1/terraform.tfstate"
