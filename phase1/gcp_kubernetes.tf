@@ -11,7 +11,6 @@ resource "google_container_cluster" "googlykuby" {
   master_auth {
     username = "${var.linux_admin_username}"
     password = "${var.linux_admin_password}}"
-
   }
 
   node_config {
