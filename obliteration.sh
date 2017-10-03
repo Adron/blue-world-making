@@ -15,13 +15,15 @@ echo "terraform destroy \
     -var linux_admin_username=$CLUSTER_USERNAME \
     -var linux_admin_password=$CLUSTER_PASSWORD \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
-    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX"
+    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX \
+    -var repo_name=$REPO_NAME"
 
 echo "yes" | terraform destroy \
     -var linux_admin_username=$CLUSTER_USERNAME \
     -var linux_admin_password=$CLUSTER_PASSWORD \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
-    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
+    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX \
+    -var repo_name=$REPO_NAME
 
 echo "Starting removal of Terraform state."
 

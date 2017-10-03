@@ -12,11 +12,3 @@ provider "azurerm" {
 }
 
 provider "aws" {}
-
-terraform {
-  backend "gcs" {
-    bucket  = "blue-world-terraform-state"
-    path    = "phase1/terraform.tfstate"
-    project = "thrashingcorecode"
-  }
-}

@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
 REPO_NAME="nope"
+FILE="../cross-phase-configuration"
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
     echo "Determined state in $line"
     REPO_NAME=$line
-done < "../cross-phase-configuration"
+done < "$FILE"
 
 echo "Starting destroy for $REPO_NAME."
 
 echo 'yes' | terraform destroy -var=repo_name=$REPO_NAME
+
+rm $FILE
 
 echo "Destruction completed."
 

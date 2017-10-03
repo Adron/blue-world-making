@@ -4,25 +4,39 @@ CLUSTER_USERNAME="coolusername"
 CLUSTER_PASSWORD="coolpassword"
 GOOGLE_CLUSTER_NAME="googlykubycluster"
 AZURE_CLUSTER_PREFIX="bluekubycluster"
+REPO_NAME=""
 
 echo "Initializing state location."
 
 cd state_init
 ./init_state_storage.sh
 
+echo "Getting confirmed configuration state file location."
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    REPO_NAME=$line
+done < "$FILE"
+
 cd ../phase1
 
 echo "Terraform init for provider dependencies."
 
-terraform init
+terraform init \
+    -backend-config="address=$REPO_NAME" \
+    -backend-config="path=phase1/terraform.tfstate"
 
-echo "Starting phase 1, Creat the Kubernetes Cluster."
-echo "terraform apply -var linux_admin_username=$CLUSTER_USERNAME -var linux_admin_password=$CLUSTER_PASSWORD"
+echo "Starting phase 1, Create the Kubernetes Cluster."
+echo "terraform destroy \
+    -var linux_admin_username=$CLUSTER_USERNAME \
+    -var linux_admin_password=$CLUSTER_PASSWORD \
+    -var cluster_name=$GOOGLE_CLUSTER_NAME \
+    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX \
+    -var repo_name=$REPO_NAME"
 terraform apply \
     -var linux_admin_username=$CLUSTER_USERNAME \
     -var linux_admin_password=$CLUSTER_PASSWORD \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
-    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX
+    -var azure_cluster_prefix=$AZURE_CLUSTER_PREFIX \
+    -var repo_name=$REPO_NAME
 
 echo "Now use `gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode` to connect."
 gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode

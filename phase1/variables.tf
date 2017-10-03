@@ -1,4 +1,9 @@
 // General Variables
+variable "repo_name" {
+  type = "string"
+  description = "Repository for Terraform state."
+}
+
 variable "linux_admin_username" {
   type        = "string"
   description = "User name for authentication to the Kubernetes linux agent virtual machines in the cluster."
