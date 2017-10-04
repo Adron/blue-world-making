@@ -24,8 +24,6 @@ echo "yes" | terraform init \
     -backend-config="address=$REPO_NAME" \
     -backend-config="path=phase1/terraform.tfstate"
 
-terraform state push terraform.tfstate
-
 echo "Starting phase 1, Create the Kubernetes Cluster."
 echo "terraform destroy \
     -var linux_admin_username=$CLUSTER_USERNAME \
@@ -41,8 +39,6 @@ terraform apply \
     -var repo_name=$REPO_NAME
 
 #echo "Now use `gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode` to connect."
-#gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode
-#az acs kubernetes get-credentials --resource-group=bluekubygroup --name=bluekubyhouse
 
 echo "Phase 1 is completed."
 sleep 2s
@@ -55,22 +51,21 @@ echo "yes" | terraform init \
     -backend-config="address=$REPO_NAME" \
     -backend-config="path=phase2/terraform.tfstate"
 
-terraform state push terraform.tfstate
-
-#echo "Running `kubectl config set-context thrashingcorecode --cluster=$CLUSTER_NAME --user=$CLUSTER_USERNAME` for kubectl context."
-#kubectl config set-context thrashingcorecode \
+#echo "Running `kubectl config set-context $AZURE_CLUSTER_PREFIX --cluster=$CLUSTER_NAME --user=$CLUSTER_USERNAME` for kubectl context."
+#kubectl config set-context $AZURE_CLUSTER_PREFIX \
 # --cluster=$CLUSTER_NAME \
 # --user=$CLUSTER_USERNAME
 #
 #echo "Config set to use-context."
 #kubectl config use-context
 
+#This sets the Google cluster as the active cluster.
+gcloud container clusters get-credentials $GOOGLE_CLUSTER_NAME --zone us-west1-a --project thrashingcorecode
+#Currently commented out as the Azure cluster isn't allowing namespaces and resoruces to be built properly.
+#az acs kubernetes get-credentials --resource-group=bluekubygroup --name=bluekubyhouse
+
 terraform apply \
     -var repo_name=$REPO_NAME
 
-
-
-
-#terraform init \
-#    -backend-config="address=terraformstate03102017112805" \
-#    -backend-config="path=phase1/terraform.tfstate"
+#echo "yes" | terraform destroy \
+#    -var repo_name=$REPO_NAME
