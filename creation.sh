@@ -25,7 +25,7 @@ echo "yes" | terraform init \
     -backend-config="path=phase1/terraform.tfstate"
 
 echo "Starting phase 1, Create the Kubernetes Cluster."
-echo "terraform destroy \
+echo "terraform apply \
     -var linux_admin_username=$CLUSTER_USERNAME \
     -var linux_admin_password=$CLUSTER_PASSWORD \
     -var cluster_name=$GOOGLE_CLUSTER_NAME \
