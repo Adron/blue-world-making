@@ -1,0 +1,90 @@
+{
+  "kind": "ReplicaSet",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "name": "deployment-3571832900",
+    "namespace": "default",
+    "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/deployment-3571832900",
+    "uid": "b209d2f9-afb2-11e7-a570-42010a8a0fe6",
+    "resourceVersion": "6038",
+    "generation": 1,
+    "creationTimestamp": "2017-10-13T01:06:08Z",
+    "labels": {
+      "pod-template-hash": "3571832900",
+      "run": "deployment"
+    },
+    "annotations": {
+      "deployment.kubernetes.io/desired-replicas": "1",
+      "deployment.kubernetes.io/max-replicas": "2",
+      "deployment.kubernetes.io/revision": "1"
+    },
+    "ownerReferences": [
+      {
+        "apiVersion": "extensions/v1beta1",
+        "kind": "Deployment",
+        "name": "deployment",
+        "uid": "b208e7f7-afb2-11e7-a570-42010a8a0fe6",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ]
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "pod-template-hash": "3571832900",
+        "run": "deployment"
+      }
+    },
+    "template": {
+      "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+          "pod-template-hash": "3571832900",
+          "run": "deployment"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "deployment",
+            "image": "adron/blue-land-app",
+            "args": [
+              "blue-land-app",
+              "created"
+            ],
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "DOMAIN",
+                "value": "cluster"
+              }
+            ],
+            "resources": {},
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {},
+        "schedulerName": "default-scheduler"
+      }
+    }
+  },
+  "status": {
+    "replicas": 1,
+    "fullyLabeledReplicas": 1,
+    "readyReplicas": 1,
+    "availableReplicas": 1,
+    "observedGeneration": 1
+  }
+}
