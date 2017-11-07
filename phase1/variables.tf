@@ -64,16 +64,6 @@ output "gcp_cluster_name" {
 }
 
 // Azure Outputs
-
-// Output variables
-output "resource_group_name" {
-  value = "Resource Group Name: ${azurerm_resource_group.blue_kuby_group.name}"
-}
-
-output "cluster_name" {
-  value = "Cluster Name: ${azurerm_container_service.bluekuby.name}"
-}
-
 output "get_credentials_command" {
-  value = "az acs kubernetes get-credentials --name=\"${azurerm_container_service.bluekuby.name}\" --resource-group=\"${azurerm_resource_group.zura_resource_group.name}\""
+  value = "az acs kubernetes get-credentials --name=\"${azurerm_container_service.bluekuby.name}\" --resource-group=\"${azurerm_resource_group.blue_kuby_group.name}\""
 }
